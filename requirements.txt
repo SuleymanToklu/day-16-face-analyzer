@@ -6,3 +6,4 @@ opencv-python-headless
 tensorflow
 deepface
 tf-keras
+tensorflow>=2.16.1 
