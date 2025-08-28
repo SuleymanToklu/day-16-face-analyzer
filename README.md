@@ -1,3 +1,14 @@
+---
+title: Yüz Analiz Aracı
+emoji: 🧠
+colorFrom: '#E74C3C'
+colorTo: '#2E86C1'
+sdk: gradio
+sdk_version: 4.31.0
+app_file: app.py
+pinned: false
+---
+
 # Yüz Analiz Aracı 🧠
 
 Bu, Gradio ve DeepFace kütüphaneleri kullanılarak oluşturulmuş basit bir yapay zeka yüz analiz aracıdır. Yüklediğiniz bir fotoğraftaki yüzleri analiz ederek yaş, cinsiyet, duygu durumu ve ırk gibi bilgileri tahmin eder.
