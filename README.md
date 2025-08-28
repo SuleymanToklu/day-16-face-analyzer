@@ -1,8 +1,8 @@
 ---
 title: Yüz Analiz Aracı
 emoji: 🧠
-colorFrom: '#E74C3C'
-colorTo: '#2E86C1'
+colorFrom: 'blue'
+colorTo: 'purple'
 sdk: gradio
 sdk_version: 4.31.0
 app_file: app.py
