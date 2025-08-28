@@ -1,5 +1,19 @@
+import os
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "3"   
+os.environ["OMP_NUM_THREADS"] = "1"        
+
 import streamlit as st
-import cv2
+
+try:
+    import cv2
+    st.write("OpenCV:", cv2.__version__)
+except Exception as e:
+    import traceback
+    st.error("cv2 import edilemedi")
+    st.code(str(e))
+    st.code(traceback.format_exc())
+    st.stop()
+
 import numpy as np
 from deepface import DeepFace
 from PIL import Image
@@ -42,9 +56,10 @@ def perform_analysis(frame):
         analysis = DeepFace.analyze(
             img_path=frame,
             actions=['age', 'gender', 'emotion'],
-            enforce_detection=True,
+            enforce_detection=False,  # ✅ Buraya değişiklik
             silent=True
         )[0]
+
         results = {
             "age": analysis['age'],
             "gender": analysis['dominant_gender'].capitalize(),

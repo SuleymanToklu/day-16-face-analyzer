@@ -1,4 +1,7 @@
-streamlit
-deepface==0.0.79
+streamlit==1.36.0
+numpy==1.23.5
+pandas==1.5.3
+pillow==9.5.0
+opencv-python-headless==4.8.1.78
 tensorflow==2.11.1
-opencv-python-headless==4.7.0.72
+deepface==0.0.79
