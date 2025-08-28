@@ -1,9 +1,5 @@
-streamlit
-numpy
-pandas
-pillow
-opencv-python-headless
-tensorflow
 deepface
-tf-keras
-tensorflow>=2.16.1 
+tensorflow
+gradio
+opencv-python
+numpy

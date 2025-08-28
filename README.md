@@ -1,78 +1,34 @@
-# 🤖 Modern Yüz Analizi Projesi
+# Yüz Analiz Aracı 🧠
 
-Bu proje, Streamlit kullanılarak oluşturulmuş, canlı webcam görüntüsü veya yüklenen bir fotoğraf üzerinden yapay zeka ile yüz analizi yapabilen interaktif bir web uygulamasıdır. Uygulama, tespit ettiği yüzlerin tahmini yaşını, cinsiyetini ve baskın duygu durumunu anlık olarak belirler.
+Bu, Gradio ve DeepFace kütüphaneleri kullanılarak oluşturulmuş basit bir yapay zeka yüz analiz aracıdır. Yüklediğiniz bir fotoğraftaki yüzleri analiz ederek yaş, cinsiyet, duygu durumu ve ırk gibi bilgileri tahmin eder.
 
-**Proje Sahibi:** Süleyman Toklu
-
----
-
-### ✨ Özellikler
-
-- **Sekmeli Arayüz:** Webcam ve dosya yükleme modları arasında kolay geçiş.
-- **Canlı Analiz:** `streamlit-webrtc` ile canlı video akışı üzerinden yüz tespiti.
-- **Anlık Görüntü Yakalama:** Canlı akıştan tek bir kare yakalayıp detaylı analiz etme.
-- **Dosyadan Analiz:** Bilgisayardan `JPG`, `PNG` gibi formatlarda fotoğraf yükleyerek analiz yapma.
-- **Kapsamlı Sonuçlar:** Tespit edilen yüzler için anlık olarak;
-    - Tahmini Yaş
-    - Baskın Cinsiyet (Erkek/Kadın)
-    - Baskın Duygu (Mutlu, Üzgün, Sinirli vb.)
-- **Modern ve Kullanıcı Dostu Tasarım:** Temiz ve anlaşılır bir arayüz.
-
-Bu proje, Streamlit kullanılarak oluşturulmuş, canlı webcam görüntüsü veya yüklenen bir fotoğraf üzerinden yapay zeka ile yüz analizi yapabilen interaktif bir web uygulamasıdır. Uygulama, tespit ettiği yüzlerin tahmini yaşını, cinsiyetini ve baskın duygu durumunu anlık olarak belirler.
+**Bu aracı kullanmak için, lütfen yandaki panelden bir fotoğraf yükleyin.**
 
 ---
 
-### ✨ Özellikler
+### Nasıl Çalışır?
 
-- **Sekmeli Arayüz:** Webcam ve dosya yükleme modları arasında kolay geçiş.
-- **Canlı Analiz:** `streamlit-webrtc` ile canlı video akışı üzerinden yüz tespiti.
-- **Anlık Görüntü Yakalama:** Canlı akıştan tek bir kare yakalayıp detaylı analiz etme.
-- **Dosyadan Analiz:** Bilgisayardan `JPG`, `PNG` gibi formatlarda fotoğraf yükleyerek analiz yapma.
-- **Kapsamlı Sonuçlar:** Tespit edilen yüzler için anlık olarak;
-    - Tahmini Yaş
-    - Baskın Cinsiyet (Erkek/Kadın)
-    - Baskın Duygu (Mutlu, Üzgün, Sinirli vb.)
-- **Modern ve Kullanıcı Dostu Tasarım:** Temiz ve anlaşılır bir arayüz.
-
-### 🛠️ Kullanılan Teknolojiler
-
-- **Python**
-- **Streamlit:** Web arayüzü ve dashboard oluşturma.
-- **OpenCV:** Görüntü işleme ve kamera yönetimi.
-- **DeepFace:** Yüz tespiti ve analizi için ana yapay zeka kütüphanesi.
-- **TensorFlow & Keras:** `DeepFace`'in arka planda kullandığı deep learning framework'leri.
-- **Streamlit-WebRTC:** Tarayıcı üzerinden canlı ve interaktif kamera akışı sağlamak için.
+Bu uygulama, yüz algılama ve analiz için popüler `deepface` kütüphanesini kullanır. Uygulamanın temel adımları şunlardır:
+1.  Kullanıcı tarafından bir fotoğraf dosyası yüklenir.
+2.  `deepface` kütüphanesi, yüklenen fotoğraftaki yüzleri tespit eder.
+3.  Tespit edilen her yüz için yaş, cinsiyet, duygu ve ırk tahminleri yapılır.
+4.  Tahmin sonuçları, kullanıcıya okunabilir bir metin formatında sunulur.
 
 ---
 
-### 🚀 Kurulum ve Çalıştırma
+### Kullanılan Teknolojiler
 
-Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin:
-
-**1. Projeyi Klonlayın:**
-```bash
-git clone [https://github.com/SuleymanToklu/day-16-face-analyzer.git](https://github.com/SuleymanToklu/day-16-face-analyzer.git)
-cd day-16-face-analyzer)
-*(Not: Bu linki, projenin bir ekran görüntüsünü alıp, onu repona yükledikten sonra o dosyanın linki ile değiştirmelisin.)*
+* **Gradio:** Kullanıcı arayüzünü hızlı bir şekilde oluşturmak için kullanıldı.
+* **DeepFace:** Yüz algılama ve analiz işlemlerini gerçekleştiren ana kütüphanedir.
+* **TensorFlow:** DeepFace kütüphanesinin arka planda kullandığı makine öğrenmesi framework'üdür.
 
 ---
 
-### 🛠️ Kullanılan Teknolojiler
+### Geliştirici
 
-- **Python**
-- **Streamlit:** Web arayüzü ve dashboard oluşturma.
-- **OpenCV:** Görüntü işleme ve kamera yönetimi.
-- **DeepFace:** Yüz tespiti ve analizi için ana yapay zeka kütüphanesi.
-- **TensorFlow & Keras:** `DeepFace`'in arka planda kullandığı deep learning framework'leri.
-- **Streamlit-WebRTC:** Tarayıcı üzerinden canlı ve interaktif kamera akışı sağlamak için.
+<Suleyman_Toklu>
+[<www.linkedin.com/in/suleyman-toklu10>]
+[<https://github.com/SuleymanToklu>]
 
----
-
-### 🚀 Kurulum ve Çalıştırma
-
-Projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin:
-
-**1. Projeyi Klonlayın:**
-```bash
-git clone [https://github.com/SuleymanToklu/day-16-face-analyzer.git](https://github.com/SuleymanToklu/day-16-face-analyzer.git)
-cd day-16-face-analyzer
+**Isparta Uygulamalı Bilimler Üniversitesi**
+**Bilgisayar Mühendisliği Öğrencisi**

@@ -1,53 +1,49 @@
-import streamlit as st
+import gradio as gr
 from deepface import DeepFace
-import cv2
 import numpy as np
 
-st.set_page_config(
-    page_title="AI Yüz Analiz Aracı",
-    page_icon="🧠",
-    layout="wide",
-)
+def analyze_face_gradio(img_path):
+    """
+    Given an image path, analyzes the face using DeepFace and returns the results.
+    """
+    
+    if img_path is None:
+        return "Lütfen bir fotoğraf yükleyin."
+    
+    try:
+        analysis = DeepFace.analyze(
+            img_path=img_path,
+            actions=["age", "gender", "race", "emotion"],
+            detector_backend="opencv",
+            enforce_detection=False # Handles images with no faces
+        )
+        
+        if not analysis:
+            return "Fotoğrafta bir yüz tespit edilemedi. Lütfen başka bir fotoğraf deneyin."
 
-st.header("Yüz Analiz Aracı 🧠", divider="rainbow")
-st.write("Lütfen analiz etmek istediğiniz bir fotoğraf dosyasını (.png, .jpg, .jpeg) yükleyin.")
+        dominant_emotion = analysis[0]["dominant_emotion"]
+        dominant_race = analysis[0]["dominant_race"]
+        age = analysis[0]["age"]
+        gender = analysis[0]["gender"]
+        
+        result_str = (
+            f"**Yaş:** {age}\n\n"
+            f"**Cinsiyet:** {gender}\n\n"
+            f"**Duygu Durumu:** {dominant_emotion}\n\n"
+            f"**Irk:** {dominant_race}"
+        )
+        
+        return result_str
 
-uploaded_file = st.file_uploader(
-    "Dosya Yükle",
-    type=["png", "jpg", "jpeg"]
-)
+    except Exception as e:
+        return f"Bir hata oluştu: {e}. Lütfen başka bir fotoğraf deneyin."
 
-if uploaded_file is not None:
-    file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
-    image = cv2.imdecode(file_bytes, 1)
 
-    with st.spinner("Analiz ediliyor... Lütfen bekleyin."):
-        try:
-            analysis = DeepFace.analyze(
-                img_path=image,
-                actions=["age", "gender", "race", "emotion"],
-                detector_backend="opencv",
-                enforce_detection=False 
-            )
-            
-            st.subheader("Analiz Edilen Fotoğraf")
-            st.image(image, channels="BGR", use_column_width=True)
-
-            if analysis:
-                st.subheader("Analiz Sonuçları 📊")
-                
-                col1, col2 = st.columns(2)
-                
-                with col1:
-                    st.metric(label="Yaş", value=analysis[0]["age"])
-                    st.metric(label="Cinsiyet", value=analysis[0]["gender"])
-                
-                with col2:
-                    st.metric(label="Duygu Durumu", value=analysis[0]["dominant_emotion"])
-                    st.metric(label="Irk", value=analysis[0]["dominant_race"])
-
-                st.success("Analiz tamamlandı!")
-            
-        except Exception as e:
-            st.error(f"Hata oluştu: {e}. Lütfen başka bir fotoğraf deneyin.")
-            st.info("Eğer hata devam ediyorsa, fotoğrafın içinde net bir yüz olduğundan emin olun.")
+gr.Interface(
+    fn=analyze_face_gradio, 
+    inputs=gr.Image(type="filepath"), 
+    outputs="text",
+    title="AI Yüz Analiz Aracı",
+    description="Yüz analizi yapmak için bir fotoğraf yükleyin (yaş, cinsiyet, duygu ve ırk tahmini).",
+    theme=gr.themes.Soft()
+).launch()
