@@ -1,0 +1,7 @@
+streamlit
+opencv-python
+deepface
+tensorflow
+tf-keras
+Pillow
+streamlit-webrtc
